@@ -4,7 +4,7 @@ class LDAPUser
   def initialize (auth_info)
     @name = auth_info[:name]
     @email = auth_info[:email]
-    @username = auth_info[:nickname]
+    @username = auth_info[:name]
     @user = SiteSetting.ldap_lookup_users_by == 'username' ? User.find_by_username(@username) : User.find_by_email(@email)
     create_user_groups(auth_info[:groups]) unless self.account_exists?
   end
